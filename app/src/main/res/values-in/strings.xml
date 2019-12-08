@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AplikasiMovieCatalogueAndroidExpert2</string>
 
@@ -5,6 +6,6 @@
     <string name="tab_tv_show">Tv Show</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="change_language_settings">setting</string>
+    <string name="hello_blank_fragment">Halo fragment kosong</string>
+    <string name="change_language_settings">pengaturan</string>
 </resources>
