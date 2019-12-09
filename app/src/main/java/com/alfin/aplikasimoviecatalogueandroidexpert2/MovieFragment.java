@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class MovieFragment extends Fragment {
 
     private RecyclerView rvMovies;
-    private ArrayList<Movie> list = new ArrayList<>();
+    private ArrayList<MovieTvShow> list = new ArrayList<>();
 
     public MovieFragment() {
         // Required empty public constructor
@@ -50,24 +50,24 @@ public class MovieFragment extends Fragment {
 
     private void showRecyclerView(){
         rvMovies.setLayoutManager(new LinearLayoutManager(getContext()));
-        MovieAdapter movieAdapter = new MovieAdapter(list);
-        rvMovies.setAdapter(movieAdapter);
+        MovieTvShowAdapter movieTvShowAdapter = new MovieTvShowAdapter(list);
+        rvMovies.setAdapter(movieTvShowAdapter);
     }
 
-    private ArrayList<Movie> getListMovies() {
+    private ArrayList<MovieTvShow> getListMovies() {
         TypedArray dataGambar = getResources().obtainTypedArray(R.array.gambar_movie);
         String[] dataName = getResources().getStringArray(R.array.judul_movie);
         String[] dataDate = getResources().getStringArray(R.array.tgl_release_movie);
         String[] dataDescription = getResources().getStringArray(R.array.deskripsi_movie);
-        ArrayList<Movie> listMovie = new ArrayList<>();
+        ArrayList<MovieTvShow> listMovieTvShow = new ArrayList<>();
         for (int i = 0; i < dataName.length; i++) {
-            Movie movie = new Movie();
-            movie.setGambar(dataGambar.getResourceId(i,0));
-            movie.setJudul(dataName[i]);
-            movie.setTanggal_rilis(dataDate[i]);
-            movie.setDeskripsi(dataDescription[i]);
-            listMovie.add(movie);
+            MovieTvShow movieTvShow = new MovieTvShow();
+            movieTvShow.setGambar(dataGambar.getResourceId(i,0));
+            movieTvShow.setJudul(dataName[i]);
+            movieTvShow.setTanggal_rilis(dataDate[i]);
+            movieTvShow.setDeskripsi(dataDescription[i]);
+            listMovieTvShow.add(movieTvShow);
         }
-        return listMovie;
+        return listMovieTvShow;
     }
 }

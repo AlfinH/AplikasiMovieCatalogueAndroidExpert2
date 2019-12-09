@@ -1,10 +1,10 @@
 package com.alfin.aplikasimoviecatalogueandroidexpert2;
 
-public class Movie {
+public class MovieTvShow {
     private int gambar;
     private String judul,tanggal_rilis,genre,deskripsi;
 
-    public Movie() {
+    public MovieTvShow() {
     }
 
     public int getGambar() {

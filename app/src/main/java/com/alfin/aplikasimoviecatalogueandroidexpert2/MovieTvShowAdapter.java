@@ -11,31 +11,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
-    private ArrayList<Movie> listMovie;
+public class MovieTvShowAdapter extends RecyclerView.Adapter<MovieTvShowAdapter.ViewHolder> {
+    private ArrayList<MovieTvShow> listMovieTvShow;
 
-    public MovieAdapter(ArrayList<Movie> list) {
-        this.listMovie = list;
+    public MovieTvShowAdapter(ArrayList<MovieTvShow> list) {
+        this.listMovieTvShow = list;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie_tvshow, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.imgGambar.setImageResource(listMovie.get(position).getGambar());
-        holder.txtJudul.setText(listMovie.get(position).getJudul());
-        holder.txtTanggal.setText(listMovie.get(position).getTanggal_rilis());
-        holder.txtDeskripsi.setText(listMovie.get(position).getDeskripsi());
+        holder.imgGambar.setImageResource(listMovieTvShow.get(position).getGambar());
+        holder.txtJudul.setText(listMovieTvShow.get(position).getJudul());
+        holder.txtTanggal.setText(listMovieTvShow.get(position).getTanggal_rilis());
+        holder.txtDeskripsi.setText(listMovieTvShow.get(position).getDeskripsi());
     }
 
     @Override
     public int getItemCount() {
-        return listMovie.size();
+        return listMovieTvShow.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
