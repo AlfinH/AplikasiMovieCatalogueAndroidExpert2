@@ -1,6 +1,7 @@
 package com.alfin.aplikasimoviecatalogueandroidexpert2;
 
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 
@@ -51,12 +52,26 @@ public class TvShowFragment extends Fragment {
         rvTvShows.setLayoutManager(new LinearLayoutManager(getContext()));
         MovieTvShowAdapter movieTvShowAdapter = new MovieTvShowAdapter(list);
         rvTvShows.setAdapter(movieTvShowAdapter);
+        
+        movieTvShowAdapter.setOnItemClickCallback(new MovieTvShowAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(MovieTvShow data) {
+                showSelectedMovieTvShow(data);
+            }
+        });
+    }
+
+    private void showSelectedMovieTvShow(MovieTvShow data) {
+        Intent intent = new Intent(getContext(),DetailMovieTvShowActivity.class);
+        intent.putExtra(DetailMovieTvShowActivity.EXTRA_MOVIE_TVSHOW,data);
+        startActivity(intent);
     }
 
     private ArrayList<MovieTvShow> getListMovies() {
         TypedArray dataGambar = getResources().obtainTypedArray(R.array.gambar_tv_show);
         String[] dataName = getResources().getStringArray(R.array.judul_tv_show);
         String[] dataDate = getResources().getStringArray(R.array.tgl_release_tv_show);
+        String[] dataGenre = getResources().getStringArray(R.array.genre_tv_show);
         String[] dataDescription = getResources().getStringArray(R.array.deskripsi_tv_show);
         ArrayList<MovieTvShow> listMovieTvShow = new ArrayList<>();
         for (int i = 0; i < dataName.length; i++) {
@@ -64,6 +79,7 @@ public class TvShowFragment extends Fragment {
             movieTvShow.setGambar(dataGambar.getResourceId(i,0));
             movieTvShow.setJudul(dataName[i]);
             movieTvShow.setTanggal_rilis(dataDate[i]);
+            movieTvShow.setGenre(dataGenre[i]);
             movieTvShow.setDeskripsi(dataDescription[i]);
             listMovieTvShow.add(movieTvShow);
         }

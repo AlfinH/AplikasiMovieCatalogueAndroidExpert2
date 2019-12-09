@@ -18,6 +18,11 @@ public class MovieTvShowAdapter extends RecyclerView.Adapter<MovieTvShowAdapter.
         this.listMovieTvShow = list;
     }
 
+    private OnItemClickCallback onItemClickCallback;
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -26,11 +31,18 @@ public class MovieTvShowAdapter extends RecyclerView.Adapter<MovieTvShowAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         holder.imgGambar.setImageResource(listMovieTvShow.get(position).getGambar());
         holder.txtJudul.setText(listMovieTvShow.get(position).getJudul());
         holder.txtTanggal.setText(listMovieTvShow.get(position).getTanggal_rilis());
         holder.txtDeskripsi.setText(listMovieTvShow.get(position).getDeskripsi());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickCallback.onItemClicked(listMovieTvShow.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -50,5 +62,9 @@ public class MovieTvShowAdapter extends RecyclerView.Adapter<MovieTvShowAdapter.
             txtTanggal = itemView.findViewById(R.id.tv_tgl_rilis);
             txtDeskripsi = itemView.findViewById(R.id.tv_deskripsi);
         }
+    }
+
+    public interface OnItemClickCallback {
+        void onItemClicked(MovieTvShow data);
     }
 }

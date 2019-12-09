@@ -10,6 +10,7 @@
     <string name="judul">title</string>
     <string name="tanggal_rilis">release_date</string>
     <string name="dummy_text">asdfg</string>
+    <string name="genre">Genre</string>
 
     <string-array name="judul_movie">
         <item>A Star Is Born</item>
